@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apex Chart</title>
+  </head>
+  <link rel="stylesheet" href="dist/apexcharts.css"/>
+  <style>
+    #chart{
+      width: 100%;
+      height: 100%;
+      border:1px solid black;
+    }
+    .text-dark{
+      width: 100px;
+    }
+  </style>
+  <body>
+    <div id="chart"></div>
+  </body>
+  <script src="dist/apexcharts.min.js"></script>
+  <script>
+    var options = {
+          series: [{
+          name: 'Marine Sprite',
+          data: [44]
+        }, {
+          name: 'Striking Calf',
+          data: [53]
+        }, {
+          name: 'Tank Picture',
+          data: [12]
+        }, {
+          name: 'Bucket Slope',
+          data: [9]
+        }, {
+          name: 'Reborn Kid',
+          data: [25]
+        }, {
+          name: 'Life of Pi',
+          data: [16]
+        }],
+          chart: {
+            toolbar:{
+              show: false,
+            },
+          type: 'bar',
+          height: 350,
+          stacked: true,
+        },
+        plotOptions: {
+          bar: {
+            barHeight: '40%',
+            barWidth: '80%',
+            horizontal: true,
+          },
+        },
+        stroke: {
+          width: false,
+          colors: ['#fff']
+        },
+        //title: {
+          //text: 'Fiction Books Sales'
+        //},
+        xaxis: {
+          categories: [''],
+          labels: {
+            formatter: function (val) {
+              return val + "K"
+            }
+          }
+        },
+        yaxis: {
+          title: {
+            text: undefined
+          },
+        },
+        tooltip: {
+          custom: function({series, seriesIndex, dataPointIndex, w}) {
+            return '<div class="text-dark">' +
+              '<span>' + series[seriesIndex][dataPointIndex] + '</span>' +
+              '</div>'
+          }
+        },
+        /*tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "K"
+            }
+          }
+        },*/
+        fill: {
+          opacity: 1
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+  </script>
+</html>
